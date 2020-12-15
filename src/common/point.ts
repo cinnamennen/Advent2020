@@ -1,4 +1,3 @@
-import RuntimeError = WebAssembly.RuntimeError;
 import { ValueObject } from "immutable";
 
 export default class Point extends Array<number> implements ValueObject {
@@ -91,7 +90,7 @@ export class ZeroPoint extends Point {
 }
 
 export function compare(a: Point, b: Point): number {
-  if (a.length !== b.length) throw RuntimeError;
+  if (a.length !== b.length) throw new Error();
   let i: number;
   for (i = 0; i < a.length; i++) {
     if (a[i] !== b[i]) break;

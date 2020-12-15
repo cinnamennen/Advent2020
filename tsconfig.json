@@ -8,20 +8,14 @@
     "inlineSourceMap": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "typeRoots": [
-      "./src/libraryTypes",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./src/libraryTypes", "./node_modules/@types"],
     "jsx": "react",
     "experimentalDecorators": true,
     "pretty": true,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
+    "lib": ["esnext"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
