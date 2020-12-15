@@ -1,10 +1,27 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2015",
-        "outDir": "dist",
-        "strict": true,
-        "noUnusedLocals": false,
-        "sourceMap": true
-    }
+  "compilerOptions": {
+    "target": "ES6",
+    "outDir": "dist",
+    "strict": true,
+    "noUnusedLocals": false,
+    "sourceMap": true,
+    "inlineSourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./src/libraryTypes",
+      "./node_modules/@types"
+    ],
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "pretty": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
