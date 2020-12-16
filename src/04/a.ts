@@ -4,17 +4,15 @@ import { Solver } from "../types";
 const solve: Solver = (filename) => {
   let records: string[] = [];
   let record = "";
-  read(filename)
-    .split("\n")
-    .forEach((line) => {
-      if (line === "") {
-        records.push(record);
-        record = "";
-      } else {
-        if (record !== "") record += " ";
-        record += line;
-      }
-    });
+  read(filename).forEach((line) => {
+    if (line === "") {
+      records.push(record);
+      record = "";
+    } else {
+      if (record !== "") record += " ";
+      record += line;
+    }
+  });
 
   let passports = records.map((p) =>
     Object.fromEntries(p.split(" ").map((i) => i.split(":")))

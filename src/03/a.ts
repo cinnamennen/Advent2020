@@ -8,13 +8,11 @@ const solve: Solver = (filename) => {
   let position = new Point(0, 0);
 
   function gen_world(offset: number = 0) {
-    read(filename)
-      .split("\n")
-      .forEach((row, y) =>
-        row
-          .split("")
-          .forEach((value, x) => w.set(new Point(x + offset, y), value))
-      );
+    read(filename).forEach((row, y) =>
+      row
+        .split("")
+        .forEach((value, x) => w.set(new Point(x + offset, y), value))
+    );
   }
 
   gen_world();

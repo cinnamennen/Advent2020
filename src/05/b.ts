@@ -41,7 +41,6 @@ export function getSeat(input: string): number {
 const solve: Solver = (filename) => {
   const seats: { [k: number]: number } = {};
   read(filename)
-    .split("\n")
     .map(getSeat)
     .forEach((id) => {
       seats[id] = 1;

@@ -37,7 +37,7 @@ export function getSeat(input: string): number {
   return getRow(x.splice(0, 7).join("")) * 8 + getCol(x.join(""));
 }
 const solve: Solver = (filename) => {
-  return Math.max(...read(filename).split("\n").map(getSeat)).toString();
+  return Math.max(...read(filename).map(getSeat)).toString();
 };
 
 export default solve;

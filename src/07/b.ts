@@ -8,7 +8,6 @@ function getRules(filename: string) {
     [key: string]: null | { amount: number; color: string }[];
   } = {};
   read(filename)
-    .split("\n")
     .filter((v) => v !== "")
     .forEach((line) => {
       const x = /^(?<color>(?:\w+ ?)+?) bags contain (?<contents>.*)\./.exec(

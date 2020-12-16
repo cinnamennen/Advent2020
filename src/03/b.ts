@@ -6,11 +6,9 @@ import Point from "../common/point";
 const solve: Solver = (filename) => {
   const w = new World();
 
-  read(filename)
-    .split("\n")
-    .forEach((row, y) =>
-      row.split("").forEach((value, x) => w.set(new Point(x + 0, y), value))
-    );
+  read(filename).forEach((row, y) =>
+    row.split("").forEach((value, x) => w.set(new Point(x + 0, y), value))
+  );
 
   function test_slope(slope: Point) {
     let position = new Point(0, 0);
