@@ -22,6 +22,9 @@
     "immutable": "^4.0.0-rc.12",
     "invariant": "^2.2.4",
     "lodash": "^4.17.20",
+    "ngraph.graph": "^19.1.0",
+    "ngraph.path": "^1.3.1",
+    "ngraph.pixel": "^2.4.1",
     "ts-is-present": "^1.1.5",
     "typescript": "4.x"
   },
