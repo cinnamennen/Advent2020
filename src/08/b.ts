@@ -24,10 +24,7 @@ class Computer {
 
   run() {
     while (!this.seen.has(this.index)) {
-      if (this.index === this.instructions.length) {
-        console.log("i would be", this.instructions[this.index]);
-        return this.accumulator;
-      }
+      if (this.index === this.instructions.length) return this.accumulator;
       if (this.index >= this.instructions.length) return null;
 
       this.seen.add(this.index);
