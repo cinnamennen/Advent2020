@@ -67,6 +67,19 @@ export default class Point extends Array<number> implements ValueObject {
     ].map((p) => p.add(this));
   }
 
+  diagonalAdjacent() {
+    return [
+      new Point(-1, 0),
+      new Point(1, 0),
+      new Point(0, -1),
+      new Point(0, 1),
+      new Point(-1, 1),
+      new Point(1, -1),
+      new Point(-1, -1),
+      new Point(1, 1),
+    ].map((p) => p.add(this));
+  }
+
   equals(other: Point): boolean {
     return this.map((a, index) => a === other[index]).reduce(
       (previousValue, currentValue) => previousValue && currentValue

@@ -73,6 +73,15 @@ export default class World<V> extends Object {
     lowX = X.LEFT,
     lowY = Y.BOTTOM,
   }: { lowX?: X; lowY?: Y } = {}): void {
+    let output = this.worldToString({ lowY, lowX });
+    // tslint:disable-next-line:no-console
+    console.log(output);
+  }
+
+  worldToString({
+    lowX = X.LEFT,
+    lowY = Y.BOTTOM,
+  }: { lowX?: X; lowY?: Y } = {}): string {
     let output = "";
     for (const y of this.yRange(lowY)) {
       let line: string = "";
@@ -83,8 +92,7 @@ export default class World<V> extends Object {
       }
       output += line + "\n";
     }
-    // tslint:disable-next-line:no-console
-    console.log(output);
+    return output;
   }
 
   set(point: Point, n: V) {
