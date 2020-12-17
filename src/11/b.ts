@@ -16,6 +16,33 @@ function getPredicate(entry: [Point, Data]): entry is [Point, Chair] {
   return isChair(d);
 }
 
+function getVisible(point: Point, w: World<Data>): Data[] {
+  return [
+    new Point(-1, 0),
+    new Point(1, 0),
+    new Point(0, -1),
+    new Point(0, 1),
+    new Point(-1, 1),
+    new Point(1, -1),
+    new Point(-1, -1),
+    new Point(1, 1),
+  ]
+    .map((p) => {
+      let position = point;
+      while (true) {
+        position = position.add(p);
+        if (w.world.get(position) === undefined) {
+          return ".";
+        }
+        if (w.world.get(position) === ".") {
+          continue;
+        }
+        return w.world.get(position);
+      }
+    })
+    .map((p) => p || ".");
+}
+
 function iterate(w: World<Data>) {
   [
     ...w.world
@@ -24,14 +51,14 @@ function iterate(w: World<Data>) {
       .map<[Point, Chair, Data[]]>(([point, data]) => [
         point,
         data,
-        point.diagonalAdjacent().map((p) => w.world.get(p) || "."),
+        getVisible(point, w),
       ])
       .map<[Point, Chair] | undefined>(([point, data, adjacent]) => {
         if (data === "L" && adjacent.filter((d) => d === "#").length === 0) {
           return [point, "#"];
         } else if (
           data === "#" &&
-          adjacent.filter((d) => d === "#").length >= 4
+          adjacent.filter((d) => d === "#").length >= 5
         ) {
           return [point, "L"];
         }
