@@ -9,6 +9,7 @@ describe("Point", () => {
     expect(new Point(1, 2, 3).add(new Point(1, 2, 3))).toEqual(
       new Point(2, 4, 6)
     );
+    expect(new Point(10, 0).add(new Point(0, 3))).toEqual(new Point(10, 3));
   });
   test("subtraction", () => {
     expect(new Point(2, 4, 6).sub(new Point(1, 2, 3))).toEqual(
