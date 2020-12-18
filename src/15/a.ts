@@ -8,22 +8,27 @@ class Game {
   private spoken: Map<number, number>;
   private said: Set<number>;
 
-  constructor() {
+  constructor(x: number[]) {
     this.said = new Set<number>();
     this.spoken = new Map<number, number>();
-    return this;
+    x.forEach(this.speak);
   }
 
   say(w: number): void {
-    this.first = !this.said.has(w);
-    this.spoken.set(w, this.turn);
-    this.last = w;
-    this.said.add(w);
+    let b = this.said.has(w);
+    this.first = !b;
+    this.speak(w);
     this.turn++;
   }
 
+  private speak(w: number) {
+    this.spoken.set(w, this.turn);
+    this.last = w;
+    this.said.add(w);
+  }
+
   play() {
-    while (this.turn < 10) {
+    for (; this.turn < 10; ) {
       if (this.first) this.say(0);
       else {
         console.log(this.turn, this.spoken.get(this.last));
@@ -38,8 +43,7 @@ const solve: Solver = (filename: string): string => {
     .split(",")
     .map((i) => parseInt(i, 10));
 
-  const g = new Game();
-  x.forEach((l) => g.say(l));
+  const g = new Game(x);
 
   g.play();
 
