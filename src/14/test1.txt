@@ -1,0 +1,17 @@
+mask = 1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+mem[0] = 1
+mem[0] = 2
+mem[0] = 3
+mem[0] = 4
+mem[0] = 5
+mem[0] = 6
+mem[0] = 7
+mem[0] = 8
+mem[0] = 9
+mem[0] = 10
+mem[0] = 11
+mem[0] = 12
+mem[0] = 13
+mem[0] = 14
+mem[0] = 15
+mem[0] = 16
