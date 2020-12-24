@@ -7,14 +7,15 @@ const solve: Solver = (filename: string): string => {
     .split(",")
     .map((i) => parseInt(i, 10));
 
-  const said = Array(2020);
+  let number = 30000000;
+  const said = Array(number);
   for (let i = 0; i < words.length - 1; i++) {
     let word = words[i];
     said[word] = i + 1;
   }
   let current_spoken = words[words.length - 1];
 
-  for (let turn = words.length; turn < 2020; turn++) {
+  for (let turn = words.length; turn < number; turn++) {
     if (!said[current_spoken]) {
       said[current_spoken] = turn;
       current_spoken = 0;
