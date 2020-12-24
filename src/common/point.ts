@@ -1,4 +1,22 @@
 import { ValueObject } from "immutable";
+import { isEqual } from "lodash";
+
+function cartesian(args: number[][]) {
+  let r: number[][] = [];
+  let max = args.length - 1;
+
+  function helper(arr: number[], i: number) {
+    for (let j = 0, l = args[i].length; j < l; j++) {
+      let a = arr.slice(0); // clone arr
+      a.push(args[i][j]);
+      if (i == max) r.push(a);
+      else helper(a, i + 1);
+    }
+  }
+
+  helper([], 0);
+  return r;
+}
 
 export default class Point extends Array<number> implements ValueObject {
   constructor(...args: number[]) {
@@ -67,17 +85,11 @@ export default class Point extends Array<number> implements ValueObject {
     ].map((p) => p.add(this));
   }
 
-  diagonalAdjacent() {
-    return [
-      new Point(-1, 0),
-      new Point(1, 0),
-      new Point(0, -1),
-      new Point(0, 1),
-      new Point(-1, 1),
-      new Point(1, -1),
-      new Point(-1, -1),
-      new Point(1, 1),
-    ].map((p) => p.add(this));
+  neighbors(): Point[] {
+    return cartesian(Array(this.length).fill([-1, 0, 1]))
+      .filter((x) => !isEqual(x, this.zero_point()))
+      .map((p) => new Point(...p))
+      .map((p) => this.add(p));
   }
 
   equals(other: Point): boolean {

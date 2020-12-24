@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "outDir": "dist",
     "strict": true,
     "noUnusedLocals": false,
     "sourceMap": true,

@@ -38,6 +38,31 @@ describe("Point", () => {
       )
     );
   });
+  test("neighbors 1d", () => {
+    expect(new Point(0).neighbors().sort(compare)).toEqual(
+      [new Point(-1), new Point(1)].sort(compare)
+    );
+  });
+  test("neighbors 2d", () => {
+    expect(new Point(0, 0).neighbors().sort(compare)).toEqual(
+      [
+        new Point(-1, 0),
+        new Point(1, 0),
+        new Point(0, -1),
+        new Point(0, 1),
+        new Point(-1, 1),
+        new Point(1, -1),
+        new Point(-1, -1),
+        new Point(1, 1),
+      ].sort(compare)
+    );
+  });
+  test("neighbors 3d", () => {
+    expect(new Point(0, 0, 0).neighbors().length).toEqual(26);
+  });
+  test("neighbors 4d", () => {
+    expect(new Point(0, 0, 0, 0).neighbors().length).toEqual(80);
+  });
 });
 
 describe("ZeroPoint", () => {

@@ -24,7 +24,7 @@ function iterate(w: World<Data>) {
       .map<[Point, Chair, Data[]]>(([point, data]) => [
         point,
         data,
-        point.diagonalAdjacent().map((p) => w.world.get(p) || "."),
+        point.neighbors().map((p) => w.world.get(p) || "."),
       ])
       .map<[Point, Chair] | undefined>(([point, data, adjacent]) => {
         if (data === "L" && adjacent.filter((d) => d === "#").length === 0) {
